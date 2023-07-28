@@ -12,18 +12,18 @@ int main() {
 int cars = 0;
 printf("plese enter the count of cars ");
 scanf("%d",&cars);
-Cars* cars_ptr = (Cars*)malloc(cars,sizeof(Cars));
+Cars* cars_ptr = (Cars*)malloc(cars * sizeof(Cars));
 if(cars_ptr != NULL){
     for(int i=0;i<cars;i++){
       
         printf("please enter the %d car name ",i+1);
-        scanf("%s",&cars_ptr[i].name);
+        scanf("%s",(cars_ptr+i)->name);
         printf("please enter the %d car color ",i+1);
-        scanf("%s",&cars_ptr[i].color);
+        scanf("%s",(cars_ptr+i)->color);
          printf("please enter the %d car salary ",i+1);
-        scanf("%d",&cars_ptr[i].salary);
+        scanf("%d",&(cars_ptr+i)->salary);
     }
-  char option='\0';
+  char option;
     printf("do you want change some info?? N or Y ");
     scanf(" %c",&option);
     switch(option){
@@ -35,13 +35,13 @@ if(cars_ptr != NULL){
         case 'Y':printf("please enter the which car you want (number) ");
                     int num;
                     scanf("%d",&num);
-                        printf("your car is \n Name: %s\n Color: %s\n Salary: %d\n",&cars_ptr[num-1].name,&cars_ptr[num-1].color,&cars_ptr[num-1].salary);
+                        printf("your car is \n Name: %s\n Color: %s\n Salary: %d\n",(cars_ptr+num-1)->name,(cars_ptr+num-1)->color,(cars_ptr+num-1)->salary);
                         printf("please enter the  car new name ");
-                        scanf("%s",&cars_ptr[num-1].name);
+                        scanf("%s",(cars_ptr+num-1)->name);
                         printf("please enter the  car new color ");
-                        scanf("%s",&cars_ptr[num-1].color);
+                        scanf("%s",(cars_ptr+num-1)->color);
                         printf("please enter the  car new salary ");
-                        scanf("%d",&cars_ptr[num-1].salary);
+                        scanf("%d",(cars_ptr+num-1)->salary);
                         break;
                    
                     
@@ -50,9 +50,9 @@ if(cars_ptr != NULL){
     
      for(int i=0;i<cars;i++){
       
-        printf("the %d car name is %s \n",i+1,&cars_ptr[i].name);
-        printf("the %d car color is %s \n",i+1,&cars_ptr[i].color);
-          printf("the %d car salary is %d \n",i+1,&cars_ptr[i].salary);
+        printf("the %d car name is %s \n",i+1,(cars_ptr+i)->name);
+        printf("the %d car color is %s \n",i+1,(cars_ptr+i)->color);
+          printf("the %d car salary is %d \n",i+1,(cars_ptr+i)->salary);
      
     }
 }
